@@ -30,16 +30,15 @@ jobs:
         run: |
           set -euo pipefail
           SRC=https://tubc-2027.firebaseapp.com
-          mkdir -p _site/__/auth _site/__/firebase
+          mkdir -p _site/__/auth
           curl -fsSL "$SRC/__/auth/handler"        -o _site/__/auth/handler.html
           curl -fsSL "$SRC/__/auth/handler.js"     -o _site/__/auth/handler.js
           curl -fsSL "$SRC/__/auth/experiments.js" -o _site/__/auth/experiments.js
           curl -fsSL "$SRC/__/auth/iframe"         -o _site/__/auth/iframe.html
           curl -fsSL "$SRC/__/auth/iframe.js"      -o _site/__/auth/iframe.js
-          curl -fsSL "$SRC/__/firebase/init.json"  -o _site/__/firebase/init.json
           printf '<!doctype html><meta charset="utf-8"><title>TUBC 2027</title><meta http-equiv="refresh" content="0;url=/tubc-2027/"><a href="/tubc-2027/">TUBC 2027 Tracker</a>\n' > _site/index.html
           touch _site/.nojekyll
-          ls -la _site/__/auth _site/__/firebase
+          ls -la _site/__/auth
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
